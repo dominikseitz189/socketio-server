@@ -7,6 +7,9 @@ const { Server } = require('socket.io');
 const app = express();
 const server = createServer(app);
 
+// Use port number from the PORT environment variable or 3000 if not specified
+const port = process.env.PORT || 3001;
+
 const io = new Server(server, {
     cors: {
         origin: "*",
@@ -36,6 +39,6 @@ io.on('connection', (socket) => {
 
 });
 
-server.listen(3001, () => {
+server.listen(port, () => {
     console.log("Server 1 is running on port 3001!");
 })
